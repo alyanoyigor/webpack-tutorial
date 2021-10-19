@@ -1,4 +1,5 @@
-const path = require("path/posix");
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: {
@@ -6,8 +7,13 @@ module.exports = {
 		counts: "./src/counts.js",
 	},
 	output: {
-		filename: "[name].bundle.js",
+		filename: "[name].[contenthash].js",
 		path: path.resolve("dist"),
 	},
 	mode: "development",
+	plugins: [
+		new HTMLWebpackPlugin({
+			template: "./src/index.html",
+		}),
+	],
 };
