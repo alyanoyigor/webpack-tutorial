@@ -3,19 +3,28 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
+	context: path.resolve(__dirname, "src"),
 	entry: {
-		main: "./src/index.js",
-		counts: "./src/counts.js",
+		main: "./index.js",
+		counts: "./counts.js",
 	},
 	output: {
 		filename: "[name].[contenthash].js",
-		path: path.resolve("dist"),
+		path: path.resolve(__dirname, "dist"),
 	},
 	mode: "development",
 	plugins: [
 		new HTMLWebpackPlugin({
-			template: "./src/index.html",
+			template: "./index.html",
 		}),
 		new CleanWebpackPlugin(),
 	],
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: ["style-loader", "css-loader"],
+			},
+		],
+	},
 };
