@@ -15,3 +15,4 @@ const countClicks = () => {
 };
 
 const clicks = countClicks();
+console.log(clicks);

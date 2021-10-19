@@ -1,9 +1,12 @@
 const path = require("path/posix");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: {
+		main: "./src/index.js",
+		counts: "./src/counts.js",
+	},
 	output: {
-		filename: "bundle.js",
+		filename: "[name].bundle.js",
 		path: path.resolve("dist"),
 	},
 	mode: "development",
